@@ -1,0 +1,65 @@
+/* PDF RENDERING STYLES (Isolated) */
+
+* {
+    box-sizing: border-box;
+}
+
+body.pdf-render-view {
+    background: #525659;
+    padding: 20px;
+    margin: 0;
+    overflow: auto;
+    font-family: sans-serif;
+}
+
+/* PAGE CONTAINER */
+.pdf-page {
+    position: relative;
+    background: white;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    /* inner content clipped to page */
+}
+
+/* LAYER 1: VECTORS (SVG) */
+.pdf-vectors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* LAYER 2: IMAGES */
+.pdf-image {
+    position: absolute;
+    z-index: 1;
+    /* Images should fit their box */
+    object-fit: contain;
+}
+
+/* LAYER 3: TEXT */
+.text-block {
+    position: absolute;
+    z-index: 2;
+    white-space: normal;
+    /* Allow wrapping if needed, or 'pre' if purely positional */
+    overflow: visible;
+}
+
+/* Reset typography for fidelity */
+.text-block p,
+.text-block h1,
+.text-block h2,
+.text-block h3,
+.text-block h4,
+.text-block h5,
+.text-block h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.15;
+    /* Tight line height typical of PDFs */
+    font-size: inherit;
+    /* Inherit form style attribute set by renderer if any */
+}

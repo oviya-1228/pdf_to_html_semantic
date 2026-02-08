@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pdf-converter:
+    build: .
+    container_name: pdf_semantic_converter
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1

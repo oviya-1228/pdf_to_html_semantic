@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Semantic Converter</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- PDF.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>PDF Semantic Converter</h1>
+        <div class="controls">
+            <input type="file" id="pdf-upload" accept="application/pdf">
+            <button onclick="uploadPDF()" id="upload-btn">Upload & Convert</button>
+            <span id="status-text">Ready</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Left: PDF Viewer -->
+        <div class="panel" id="pdf-panel">
+            <h2>Original PDF</h2>
+            <div id="pdf-container"></div>
+        </div>
+
+        <!-- Center: HTML Preview -->
+        <div class="panel" id="html-panel">
+            <h2>Semantic HTML</h2>
+            <iframe id="html-preview" title="HTML Result"></iframe>
+        </div>
+
+        <!-- Right: JSON Tree -->
+        <div class="panel" id="json-panel">
+            <h2>Structured Data</h2>
+            <pre id="json-view"></pre>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
